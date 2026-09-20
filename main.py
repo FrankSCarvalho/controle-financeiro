@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import date, datetime
 
+from banco import inserir_lancamento
+
 def pegar_descricao():
     descricao = entrada_descricao.get()    
 
@@ -46,14 +48,14 @@ def cadastrar():
     descricao = pegar_descricao()
     valor = pegar_valor()
     tipo_lancamento = pegar_tipo()
+    data_lancamento = validar_data()
+    categoria_lancamento = categoria.get()
 
-    if descricao is None or valor is None or tipo_lancamento is None:
+    if descricao is None or valor is None or tipo_lancamento is None or data_lancamento is None or categoria_lancamento == "":
         messagebox.showwarning("Atenção", "Preencha todos os campos antes de cadastrar")
         return
 
-    print(descricao)
-    print(valor)
-    print(tipo_lancamento)
+    inserir_lancamento(descricao, valor, tipo_lancamento, data_lancamento, categoria_lancamento)
 
     entrada_descricao.delete(0, tk.END)
     entrada_valor.delete(0, tk.END)
