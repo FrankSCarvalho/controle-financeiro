@@ -4,6 +4,15 @@ def conectar():
     conexao = sqlite3.connect("financeiro.db")
     return conexao
 
+def inserir_lancamento(descricao, valor, tipo, data, categoria):
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("INSERT INTO lancamentos (descricao, valor, tipo, data, categoria) VALUES (?,?,?,?,?)",(descricao,valor,tipo,data,categoria))
+
+    conexao.commit()
+    conexao.close()
+
 
 conexao = conectar()
 cursor = conexao.cursor()
