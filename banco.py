@@ -13,6 +13,16 @@ def inserir_lancamento(descricao, valor, tipo, data, categoria):
     conexao.commit()
     conexao.close()
 
+def buscar_lancamentos():
+    conexao = conectar()
+    cursor = conexao.cursor()
+
+    cursor.execute("SELECT * FROM lancamentos")
+
+    lancamentos = cursor.fetchall()
+    conexao.close()
+    return lancamentos
+
 
 conexao = conectar()
 cursor = conexao.cursor()
