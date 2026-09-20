@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import date, datetime
 
-from banco import inserir_lancamento
+from banco import inserir_lancamento, buscar_lancamentos
+
 
 def pegar_descricao():
     descricao = entrada_descricao.get()    
@@ -63,6 +64,12 @@ def cadastrar():
 
     messagebox.showinfo("Sucesso", "Lançamento cadastrado com sucesso!")
 
+def carregar_lancamentos():
+    lancamentos = buscar_lancamentos()
+
+    for lancamento in lancamentos:
+        tabela.insert("", tk.END, values=(lancamento[0], lancamento[1], lancamento[2], lancamento[3], lancamento[4], lancamento[5]))
+
 
     
 
@@ -109,6 +116,8 @@ tabela.heading("data", text="Data")
 tabela.heading("categoria", text="Categoria")
 
 tabela.pack()
+
+carregar_lancamentos()
 
 
 janela.mainloop()
