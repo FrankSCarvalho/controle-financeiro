@@ -9,7 +9,9 @@ cursor.execute("""
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         descricao TEXT NOT NULL,
         valor REAL NOT NULL,
-        tipo TEXT NOT NULL
+        tipo TEXT NOT NULL,
+        data TEXT NOT NULL,
+        categoria TEXT NOT NULL
     )
 """)
 
