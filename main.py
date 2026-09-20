@@ -1,14 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 
-janela = tk.Tk()
-janela.title("Controle Financeiro")
-
-tk.Label(janela, text="Descrição").pack()
-
-entrada_descricao = tk.Entry(janela)
-entrada_descricao.pack()
-
 def pegar_descricao():
     descricao = entrada_descricao.get()    
 
@@ -16,11 +8,6 @@ def pegar_descricao():
         print("A descrição está vazia")
     else:
         print(descricao)
-
-tk.Label(janela, text="Valor").pack()
-
-entrada_valor = tk.Entry(janela)
-entrada_valor.pack()
 
 def pegar_valor():
     valor = entrada_valor.get()
@@ -35,11 +22,6 @@ def pegar_valor():
         print("O valor informado é inválido.")
         return None
 
-tk.Label(janela, text="Tipo").pack()
-
-tipo = ttk.Combobox(janela, values=["Entrada", "Saída"])
-tipo.pack()
-
 def pegar_tipo():
     valor = tipo.get()
 
@@ -49,6 +31,36 @@ def pegar_tipo():
 
     return valor
 
-tk.Button(janela, text="Cadastrar").pack()
+def cadastrar():
+    descricao = pegar_descricao()
+    valor = pegar_valor()
+    tipo_lancamento = pegar_tipo()
+
+    print(descricao)
+    print(valor)
+    print(tipo_lancamento)
+
+
+janela = tk.Tk()
+janela.title("Controle Financeiro")
+
+tk.Label(janela, text="Descrição").pack()
+
+entrada_descricao = tk.Entry(janela)
+entrada_descricao.pack()
+
+tk.Label(janela, text="Valor").pack()
+
+entrada_valor = tk.Entry(janela)
+entrada_valor.pack()
+
+
+tk.Label(janela, text="Tipo").pack()
+
+tipo = ttk.Combobox(janela, values=["Entrada", "Saída"])
+tipo.pack()
+
+tk.Button(janela, text="Cadastrar", command=cadastrar).pack()
+
 
 janela.mainloop()
