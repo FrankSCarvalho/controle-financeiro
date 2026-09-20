@@ -22,6 +22,14 @@ tk.Label(janela, text="Valor").pack()
 entrada_valor = tk.Entry(janela)
 entrada_valor.pack()
 
+def pegar_valor():
+    valor = entrada_valor.get()
+    if valor == "":
+        print("O valor está vazio.")
+        return None
+
+    return valor
+
 tk.Label(janela, text="Tipo").pack()
 
 tipo = ttk.Combobox(janela, values=["Entrada", "Saída"])
