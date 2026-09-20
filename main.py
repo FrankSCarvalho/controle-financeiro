@@ -9,6 +9,14 @@ tk.Label(janela, text="Descrição").pack()
 entrada_descricao = tk.Entry(janela)
 entrada_descricao.pack()
 
+def pegar_descricao():
+    descricao = entrada_descricao.get()    
+
+    if descricao == "":
+        print("A descrição está vazia")
+    else:
+        print(descricao)
+
 tk.Label(janela, text="Valor").pack()
 
 entrada_valor = tk.Entry(janela)
