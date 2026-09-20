@@ -40,6 +40,15 @@ tk.Label(janela, text="Tipo").pack()
 tipo = ttk.Combobox(janela, values=["Entrada", "Saída"])
 tipo.pack()
 
+def pegar_tipo():
+    valor = tipo.get()
+
+    if valor == "":
+        print("Nenhum tipo foi selecionado.")
+        return None
+
+    return valor
+
 tk.Button(janela, text="Cadastrar").pack()
 
 janela.mainloop()
