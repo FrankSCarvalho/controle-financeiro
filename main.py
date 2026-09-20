@@ -32,6 +32,15 @@ def pegar_tipo():
         return None
 
     return valor
+def validar_data():
+    valor = entrada_data.get()
+
+    try:
+        data = datetime.strptime(valor, "%d/%m/%Y")
+        return data.strftime("%d/%m/%Y")
+    except ValueError:
+        print("A data informada é inválida.")
+        return None
 
 def cadastrar():
     descricao = pegar_descricao()
@@ -52,15 +61,7 @@ def cadastrar():
 
     messagebox.showinfo("Sucesso", "Lançamento cadastrado com sucesso!")
 
-def validar_data():
-    valor = entrada_data.get()
 
-    try:
-        data = datetime.strptime(valor, "%d/%m/%Y")
-        return data.strftime("%d/%m/%Y")
-    except ValueError:
-        print("A data informada é inválida.")
-        return None
     
 
 janela = tk.Tk()
