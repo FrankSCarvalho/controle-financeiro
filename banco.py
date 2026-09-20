@@ -23,6 +23,15 @@ def buscar_lancamentos():
     conexao.close()
     return lancamentos
 
+def excluir_lancamento(id_lancamento):
+    conexao = conectar()
+    cursor = conexao.cursor()
+    
+    cursor.execute("DELETE * FROM lancamentos WHERE id = ?",(id_lancamento))
+
+    conexao.commit()
+    conexao.close()
+
 
 conexao = conectar()
 cursor = conexao.cursor()
