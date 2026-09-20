@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, messagebox
 
 def pegar_descricao():
     descricao = entrada_descricao.get()    
@@ -44,6 +44,8 @@ def cadastrar():
     entrada_descricao.delete(0, tk.END)
     entrada_valor.delete(0, tk.END)
     tipo.set("")
+
+    messagebox.showinfo("Sucesso", "Lançamento cadastrado com sucesso!")
 
 
 janela = tk.Tk()
