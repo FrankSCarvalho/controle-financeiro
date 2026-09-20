@@ -75,8 +75,23 @@ def carregar_lancamentos():
     for lancamento in lancamentos:
         tabela.insert("", tk.END, values=(lancamento[0], lancamento[1], lancamento[2], lancamento[3], lancamento[4], lancamento[5]))
 
+def pegar_lancamento_selecionado():
+    selecionados = tabela.selection()
 
-    
+    if not selecionados:
+        print("Nenhum lançamento selecionado.")
+        return None
+
+    return tabela.item(selecionados[0], "values")
+
+def ao_selecionar_lancamento(evento=None):
+    lancamento = pegar_lancamento_selecionado()
+
+    if lancamento is None:
+        return
+
+    print(f"Lançamento selecionado: ID {lancamento[0]} | {lancamento[1]} | R$ {lancamento[2]} | {lancamento[3]} | {lancamento[4]} | {lancamento[5]}")
+
 
 janela = tk.Tk()
 janela.title("Controle Financeiro")
@@ -114,7 +129,7 @@ tk.Label(janela,text="Lançamentos").pack()
 
 tk.Button(janela, text="Atualizar", command=carregar_lancamentos).pack()
 
-tabela = ttk.Treeview(janela, columns=("id", "descricao", "valor", "tipo", "data", "categoria"), show="headings")
+tabela = ttk.Treeview(janela, columns=("id", "descricao", "valor", "tipo", "data", "categoria"), show="headings", selectmode="browse")
 
 tabela.heading("id", text="ID")
 tabela.heading("descricao", text="Descrição")
@@ -122,6 +137,8 @@ tabela.heading("valor", text="Valor")
 tabela.heading("tipo", text="Tipo")
 tabela.heading("data", text="Data")
 tabela.heading("categoria", text="Categoria")
+
+tabela.bind("<<TreeviewSelect>>", ao_selecionar_lancamento)
 
 tabela.pack()
 
