@@ -98,5 +98,17 @@ categoria.pack()
 
 tk.Button(janela, text="Cadastrar", command=cadastrar).pack()
 
+tk.Label(janela,text="Lançamentos").pack()
+tabela = ttk.Treeview(janela, columns=("id", "descricao", "valor", "tipo", "data", "categoria"), show="headings")
+
+tabela.heading("id", text="ID")
+tabela.heading("descricao", text="Descrição")
+tabela.heading("valor", text="Valor")
+tabela.heading("tipo", text="Tipo")
+tabela.heading("data", text="Data")
+tabela.heading("categoria", text="Categoria")
+
+tabela.pack()
+
 
 janela.mainloop()
