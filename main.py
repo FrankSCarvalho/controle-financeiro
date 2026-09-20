@@ -62,9 +62,14 @@ def cadastrar():
     entrada_valor.delete(0, tk.END)
     tipo.set("")
 
+    carregar_lancamentos()
+
     messagebox.showinfo("Sucesso", "Lançamento cadastrado com sucesso!")
 
 def carregar_lancamentos():
+    for item in tabela.get_children():
+        tabela.delete(item)
+
     lancamentos = buscar_lancamentos()
 
     for lancamento in lancamentos:
