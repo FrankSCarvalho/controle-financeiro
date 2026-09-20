@@ -37,6 +37,10 @@ def cadastrar():
     valor = pegar_valor()
     tipo_lancamento = pegar_tipo()
 
+    if descricao is None or valor is None or tipo_lancamento is None:
+        messagebox.showwarning("Atenção", "Preencha todos os campos antes de cadastrar")
+        return
+
     print(descricao)
     print(valor)
     print(tipo_lancamento)
