@@ -6,8 +6,9 @@ def pegar_descricao():
 
     if descricao == "":
         print("A descrição está vazia")
+        return None
     else:
-        print(descricao)
+        return descricao
 
 def pegar_valor():
     valor = entrada_valor.get()
@@ -39,6 +40,10 @@ def cadastrar():
     print(descricao)
     print(valor)
     print(tipo_lancamento)
+
+    entrada_descricao.delete(0, tk.END)
+    entrada_valor.delete(0, tk.END)
+    tipo.set("")
 
 
 janela = tk.Tk()
