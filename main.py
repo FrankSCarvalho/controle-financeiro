@@ -28,7 +28,12 @@ def pegar_valor():
         print("O valor está vazio.")
         return None
 
-    return valor
+    try:
+        valor = float(valor)
+        return valor
+    except ValueError:
+        print("O valor informado é inválido.")
+        return None
 
 tk.Label(janela, text="Tipo").pack()
 
