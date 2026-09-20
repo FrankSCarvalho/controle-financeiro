@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
+from datetime import date
 
 def pegar_descricao():
     descricao = entrada_descricao.get()    
@@ -69,6 +70,8 @@ tk.Label(janela, text="Data").pack()
 
 entrada_data = tk.Entry(janela)
 entrada_data.pack()
+
+entrada_data.insert(0,date.today().strftime("%d/%m/%Y"))
 
 
 tk.Label(janela, text="Tipo").pack()
