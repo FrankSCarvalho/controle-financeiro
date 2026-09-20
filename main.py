@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-from datetime import date
+from datetime import date, datetime
 
 def pegar_descricao():
     descricao = entrada_descricao.get()    
@@ -52,6 +52,16 @@ def cadastrar():
 
     messagebox.showinfo("Sucesso", "Lançamento cadastrado com sucesso!")
 
+def validar_data():
+    valor = entrada_data.get()
+
+    try:
+        data = datetime.strptime(valor, "%d/%m/%Y")
+        return data.strftime("%d/%m/%Y")
+    except ValueError:
+        print("A data informada é inválida.")
+        return None
+    
 
 janela = tk.Tk()
 janela.title("Controle Financeiro")
