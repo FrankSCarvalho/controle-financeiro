@@ -89,6 +89,10 @@ tk.Label(janela, text="Tipo").pack()
 tipo = ttk.Combobox(janela, values=["Entrada", "Saída"])
 tipo.pack()
 
+tk.Label(janela,text="Categoria").pack()
+categoria = ttk.Combobox(janela,values=["Alimentação", "Transporte", "Moradia", "Lazer", "Saúde", "Outros"])
+categoria.pack()
+
 tk.Button(janela, text="Cadastrar", command=cadastrar).pack()
 
 
