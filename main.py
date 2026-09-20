@@ -84,13 +84,27 @@ def pegar_lancamento_selecionado():
 
     return tabela.item(selecionados[0], "values")
 
-def ao_selecionar_lancamento(evento=None):
+def pegar_id_lancamento_selecionado():
     lancamento = pegar_lancamento_selecionado()
 
     if lancamento is None:
+        return None
+
+    try:
+        return int(lancamento[0])
+    except (TypeError, ValueError):
+        print("O lançamento selecionado não possui um identificador válido.")
+        return None
+
+def ao_selecionar_lancamento(evento=None):
+    id_lancamento = pegar_id_lancamento_selecionado()
+
+    if id_lancamento is None:
         return
 
-    print(f"Lançamento selecionado: ID {lancamento[0]} | {lancamento[1]} | R$ {lancamento[2]} | {lancamento[3]} | {lancamento[4]} | {lancamento[5]}")
+    lancamento = pegar_lancamento_selecionado()
+
+    print(f"Lançamento selecionado: ID {id_lancamento} | {lancamento[1]} | R$ {lancamento[2]} | {lancamento[3]} | {lancamento[4]} | {lancamento[5]}")
 
 
 janela = tk.Tk()
