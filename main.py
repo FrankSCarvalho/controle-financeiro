@@ -65,6 +65,11 @@ tk.Label(janela, text="Valor").pack()
 entrada_valor = tk.Entry(janela)
 entrada_valor.pack()
 
+tk.Label(janela, text="Data").pack()
+
+entrada_data = tk.Entry(janela)
+entrada_data.pack()
+
 
 tk.Label(janela, text="Tipo").pack()
 
