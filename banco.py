@@ -1,7 +1,11 @@
 import sqlite3
 
-conexao = sqlite3.connect("financeiro.db")
+def conectar():
+    conexao = sqlite3.connect("financeiro.db")
+    return conexao
 
+
+conexao = conectar()
 cursor = conexao.cursor()
 
 cursor.execute("""
